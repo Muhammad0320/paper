@@ -6,13 +6,16 @@ function ArchivePage() {
 
   return (
     <header id="archive-header">
+      Wait a minute before continuing
       <nav>
         <ul>
           {links.map((year) => {
-            <li key={year}>
-              {" "}
-              <Link href={`/archive/${year}`}> {year} </Link>{" "}
-            </li>;
+            return (
+              <li key={year}>
+                {" "}
+                <Link href={`/archive/${year}`}> {year} </Link>{" "}
+              </li>
+            );
           })}
         </ul>
       </nav>
