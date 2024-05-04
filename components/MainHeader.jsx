@@ -1,12 +1,18 @@
 import Link from "next/link";
 
-function MainHeader() {
+export default function MainHeader() {
   return (
-    <div>
-      <Link href="/news"> this is the nees oage </Link>
-      <Link href="/news/shit"> this is the news shit page </Link>
-    </div>
+    <header id="main-header">
+      <div id="logo">
+        <Link href="/">NextNews</Link>
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <Link href="/news">News</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 }
-
-export default MainHeader;
