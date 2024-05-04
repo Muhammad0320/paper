@@ -1,8 +1,22 @@
+import { getAvailableNewsYears } from "@/lib/news";
+import Link from "next/link";
+
 function ArchivePage() {
+  const links = getAvailableNewsYears();
+
   return (
-    <div>
-      <h1> This is the archive parallel page </h1>
-    </div>
+    <header id="archive-header">
+      <nav>
+        <ul>
+          {links.map((year) => {
+            <li key={year}>
+              {" "}
+              <Link href={`/archive/${year}`}> {year} </Link>{" "}
+            </li>;
+          })}
+        </ul>
+      </nav>
+    </header>
   );
 }
 
