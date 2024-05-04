@@ -3,7 +3,7 @@ function ArchiveLayout({ archive, latest }) {
     <div>
       <h1> News archive </h1>
       <section id="archive-fiter"> {archive} </section>
-      <section id="archive-latest"> {latest} </section>
+      <section id="archive-filter"> {latest} </section>
     </div>
   );
 }
