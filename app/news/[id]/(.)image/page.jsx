@@ -11,7 +11,7 @@ function ImageView({ params }) {
     <>
       <h2>This is intercepted</h2>
       <div className="fullscreen-image">
-        <img src={newsData.image} alt={newsData.title} />
+        <img src={`/images/news/${newsData.image}`} alt={newsData.title} />
       </div>
     </>
   );
