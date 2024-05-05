@@ -1,5 +1,10 @@
 import NewsList from "@/components/NewsList";
-import { getAvailableNewsYears, getNewsForYear } from "@/lib/news";
+import {
+  getAvailableNewsMonths,
+  getAvailableNewsYears,
+  getNewsForYear,
+  getNewsForYearAndMonth,
+} from "@/lib/news";
 import Link from "next/link";
 
 function LaterstNews({ params }) {
@@ -9,8 +14,17 @@ function LaterstNews({ params }) {
 
   let news;
 
+  let links = getAvailableNewsYears();
+
   if (selectedYear && !selectedMonth) {
     news = getNewsForYear(selectedYear);
+    links = getAvailableNewsMonths(selectedYear);
+  }
+
+  if (selectedYear && selectedMonth) {
+    news = getNewsForYearAndMonth(selectedYear, selectedMonth);
+
+    links = [];
   }
 
   let newsContent = <p> No news found for the selected period... </p>;
@@ -19,19 +33,21 @@ function LaterstNews({ params }) {
     newsContent = <NewsList data={news} />;
   }
 
-  const links = getAvailableNewsYears();
-
   return (
     <>
       <header id="archive-header">
         Wait a minute before continuing
         <nav>
           <ul>
-            {links.map((year) => {
+            {links.map((link) => {
+              const href = selectedYear
+                ? `/archive/${selectedYear}/${link}`
+                : `/archive/${link}`;
+
               return (
-                <li key={year}>
+                <li key={link}>
                   {" "}
-                  <Link href={`/archive/${year}`}> {year} </Link>{" "}
+                  <Link href={href}> {link} </Link>{" "}
                 </li>
               );
             })}
