@@ -9,7 +9,7 @@ function ImageView({ params }) {
 
   return (
     <div className="fullscreen-image">
-      <img src={newsData.image} alt={newsData.title} />
+      <img src={`/images/news/${newsData.image}`} alt={newsData.title} />
     </div>
   );
 }
