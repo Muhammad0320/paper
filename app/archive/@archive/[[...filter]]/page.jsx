@@ -7,7 +7,7 @@ import {
 } from "@/lib/news";
 import Link from "next/link";
 
-function LaterstNews({ params }) {
+function FilterendNews({ params }) {
   const selectedYear = params.filter?.[0];
 
   const selectedMonth = params.filter?.[1];
@@ -35,7 +35,8 @@ function LaterstNews({ params }) {
 
   if (
     (selectedYear && !getAvailableNewsYears().includes(+selectedYear)) ||
-    (selectedMonth && !getAvailableNewsMonths().includes(+selectedMonth))
+    (selectedMonth &&
+      !getAvailableNewsMonths(selectedYear).includes(+selectedMonth))
   ) {
     throw new Error("Invalid path");
   }
@@ -66,4 +67,4 @@ function LaterstNews({ params }) {
   );
 }
 
-export default LaterstNews;
+export default FilterendNews;
