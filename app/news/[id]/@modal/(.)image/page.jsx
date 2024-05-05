@@ -9,10 +9,13 @@ function ImageView({ params }) {
 
   return (
     <>
-      <h2>This is intercepted</h2>
-      <div className="fullscreen-image">
-        <img src={`/images/news/${newsData.image}`} alt={newsData.title} />
-      </div>
+      <div className="modal-backdrop" />
+      <dialog className="modal" open>
+        <h2>This is intercepted</h2>
+        <div className="fullscreen-image">
+          <img src={`/images/news/${newsData.image}`} alt={newsData.title} />
+        </div>
+      </dialog>
     </>
   );
 }
