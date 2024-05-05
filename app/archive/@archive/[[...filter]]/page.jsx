@@ -10,8 +10,6 @@ function LaterstNews({ params }) {
   let news;
 
   if (selectedYear && !selectedMonth) {
-    console.log(news);
-
     news = getNewsForYear(selectedYear);
   }
 
