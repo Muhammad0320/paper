@@ -1,12 +1,7 @@
-"use client";
+import { getNewsItem } from "@/lib/news";
 
-import { DUMMY_NEWS } from "@/dummyNews";
-import { useRouter } from "next/navigation";
-
-function ImageView({ params }) {
-  const router = useRouter();
-
-  const newsData = DUMMY_NEWS.find((news) => news.slug === params.id);
+async function ImageView({ params }) {
+  const newsData = await getNewsItem(params.slug);
 
   if (!newsData) {
     notFound();
@@ -14,7 +9,6 @@ function ImageView({ params }) {
 
   return (
     <>
-      <div className="modal-backdrop" onClick={router.back} />
       <dialog className="modal" open>
         <div className="fullscreen-image">
           <img src={`/images/news/${newsData.image}`} alt={newsData.title} />
