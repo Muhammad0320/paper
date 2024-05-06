@@ -1,7 +1,10 @@
 import { getNewsItem } from "@/lib/news";
 
 async function ImageView({ params }) {
-  const newsData = await getNewsItem(params.slug);
+  const newsData = await getNewsItem(params.id);
+
+  console.log(params);
+
   if (!newsData) {
     notFound();
   }

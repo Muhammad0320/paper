@@ -2,7 +2,7 @@ import ModalBackdrop from "@/components/ModalBackdrop";
 import { getNewsItem } from "@/lib/news";
 
 async function ImageView({ params }) {
-  const newsData = await getNewsItem(params.slug);
+  const newsData = await getNewsItem(params.id);
 
   if (!newsData) {
     notFound();

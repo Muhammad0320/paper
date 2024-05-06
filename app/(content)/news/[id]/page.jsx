@@ -4,7 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 async function NewsDetailsPage({ params }) {
-  const newsData = await getNewsItem(params.slug);
+  const newsData = await getNewsItem(params.id);
 
   if (!newsData) {
     notFound();
