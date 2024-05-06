@@ -1,3 +1,4 @@
+import ModalBackdrop from "@/components/ModalBackdrop";
 import { getNewsItem } from "@/lib/news";
 
 async function ImageView({ params }) {
@@ -9,6 +10,7 @@ async function ImageView({ params }) {
 
   return (
     <>
+      <ModalBackdrop />
       <dialog className="modal" open>
         <div className="fullscreen-image">
           <img src={`/images/news/${newsData.image}`} alt={newsData.title} />
