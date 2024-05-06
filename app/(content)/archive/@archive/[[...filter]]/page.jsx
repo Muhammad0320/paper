@@ -7,17 +7,17 @@ import {
 } from "@/lib/news";
 import Link from "next/link";
 
-function FilterendNews({ params }) {
+async function FilterendNews({ params }) {
   const selectedYear = params.filter?.[0];
 
   const selectedMonth = params.filter?.[1];
 
   let news;
 
-  let links = getAvailableNewsYears();
+  let links = await getAvailableNewsYears();
 
   if (selectedYear && !selectedMonth) {
-    news = getNewsForYear(selectedYear);
+    news = await getNewsForYear(selectedYear);
     links = getAvailableNewsMonths(selectedYear);
   }
 
@@ -33,10 +33,12 @@ function FilterendNews({ params }) {
     newsContent = <NewsList data={news} />;
   }
 
+  const avalableNewsYears = await getAvailableNewsYears();
+
   if (
-    (selectedYear && !getAvailableNewsYears().includes(+selectedYear)) ||
+    (selectedYear && !avalableNewsYears.includes(selectedYear)) ||
     (selectedMonth &&
-      !getAvailableNewsMonths(selectedYear).includes(+selectedMonth))
+      !getAvailableNewsMonths(selectedYear).includes(selectedMonth))
   ) {
     throw new Error("Invalid path");
   }
@@ -68,5 +70,3 @@ function FilterendNews({ params }) {
 }
 
 export default FilterendNews;
-
-
