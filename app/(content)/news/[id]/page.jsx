@@ -1,4 +1,3 @@
-import { DUMMY_NEWS } from "@/dummyNews";
 import { getNewsItem } from "@/lib/news";
 import Link from "next/link";
 import { notFound } from "next/navigation";
